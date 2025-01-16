@@ -51,17 +51,26 @@ Sample Input: [firstInteger => 2, secondInteger => 2]
 
 Sample Output: (2+2)*3=12
 
-Sample Output: 'It is summertime!" -->
+ -->
 
 <?php 
 $num1=5;
-$num2=5;
+$num2=4;
 
 function cal(){
 global $num1;
 global $num2;
+if ($num1 == $num2){
+
 $num3 = ($num1 + $num2)*3;
-echo $num3 ,"<br>";
+
+}else {
+    $num3 = $num1 + $num2;
+}
+
+
+
+echo "the numbers not equal but the sum of this is ", $num3 ,"<br>";
 
 }
 cal();
@@ -95,7 +104,7 @@ $sum1 = $num4 + $num5 ;
 if ($sum1 == 30){
 echo "True" ,"<br>";
 }else {
-    echo "fulse" ,"<br>";
+    echo "false" ,"<br>";
 }
 
 ?>
@@ -121,8 +130,8 @@ Coding Academy
 powered by Simplon
 -->
 <?php 
-$num6 = 3005;
-if($num6 %3 == 0){
+$num6 = 3000;
+if($num6 %3 == 0 && $num6 > 0){
     echo "true","<br>";
 
 
@@ -374,6 +383,7 @@ $inputs =  [60,86,95,63,55,74,79,62,50];
 $degree =array_sum($inputs) / count($inputs);
 if($degree < 60){
     echo "your degree is "  , $degree , " your grade is F";
+    
 }elseif ($degree <= 70){
 
     echo "your degree is "  , $degree , " your grade is D";
