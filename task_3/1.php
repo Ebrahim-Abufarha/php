@@ -230,18 +230,6 @@ echo $count ,"<br>";
 cell spacing="0px" to the table tag.  -->
 
 
-
-
-
-
-
-<!-- 10. Write a PHP program that repeats integers from 1 to 50. For multiples of three, print "Fizz" 
-instead of the number, and for multiples of five print "Buzz". For numbers that are multiples of 
-both three and five, print "FizzBuzz". 
- 
-Expected Output: 1 2 Fizz 4 Buzz Fizz 7 8 Fizz ……. -->
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -265,6 +253,39 @@ Expected Output: 1 2 Fizz 4 Buzz Fizz 7 8 Fizz ……. -->
     </table>
 </body>
 </html>
+
+
+
+
+
+<!-- 10. Write a PHP program that repeats integers from 1 to 50. For multiples of three, print "Fizz" 
+instead of the number, and for multiples of five print "Buzz". For numbers that are multiples of 
+both three and five, print "FizzBuzz". 
+ 
+Expected Output: 1 2 Fizz 4 Buzz Fizz 7 8 Fizz ……. -->
+
+
+<?php
+// Loop through numbers from 1 to 50
+for ($i = 1; $i <= 50; $i++) {
+    // Check if the number is a multiple of both 3 and 5
+    if ($i % 3 == 0 && $i % 5 == 0) {
+        echo "FizzBuzz "  , "<br>";
+    }
+    // Check if the number is a multiple of 3
+    elseif ($i % 3 == 0) {
+        echo "Fizz "  , "<br>";
+    }
+    // Check if the number is a multiple of 5
+    elseif ($i % 5 == 0) {
+        echo "Buzz "  , "<br>";
+    }
+    // If none of the above, print the number
+    else {
+        echo $i . " "  , "<br>";
+    }
+}
+?>
 
 
 
