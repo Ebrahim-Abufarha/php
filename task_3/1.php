@@ -82,22 +82,18 @@ Expected Output:
 
 
 <?php
-// عدد الصفوف والأعمدة
 $rows = 5;
 $cols = 5;
 
-// حلقة خارجية للصفوف
 for ($i = 1; $i <= $rows; $i++) {
-    // حلقة داخلية للأعمدة
     for ($j = 1; $j <= $cols; $j++) {
-        // تحديد الرقم الذي سيتم عرضه
         if ($j <= $rows - $i) {
-            echo "1 "; // الأعمدة التي تحتوي على الرقم 1
+            echo "1 "; 
         } else {
-            echo $i . " "; // الأعمدة التي تحتوي على الأرقام المتغيرة
+            echo $i . " ";
         }
     }
-    echo "<br>"; // الانتقال إلى الصف التالي
+    echo "<br>"; 
 }
 ?>
 
@@ -119,22 +115,18 @@ Expected Output:
 
 
 <?php
-// عدد الصفوف والأعمدة
 $rows = 5;
 $cols = 5;
 
-// حلقة خارجية للصفوف
 for ($i = 1; $i <= $rows; $i++) {
-    // حلقة داخلية للأعمدة
     for ($j = 1; $j <= $cols; $j++) {
-        // تحقق إذا كان العمود يساوي الصف (على القطر الرئيسي)
         if ($i == $j) {
-            echo $i . " "; // طباعة الرقم الخاص بالقطر
+            echo $i . " ";
         } else {
-            echo "0 "; // طباعة الصفر
+            echo "0 "; 
         }
     }
-    echo "<br>"; // الانتقال إلى الصف التالي
+    echo "<br>"; 
 }
 ?>
 
@@ -238,12 +230,10 @@ cell spacing="0px" to the table tag.  -->
 <body>
     <table border="1" cellpadding="3px" cellspacing="0px">
         <?php
-        // إنشاء الأعمدة لجدول الضرب
         for ($col = 1; $col <= 5; $col++) {
             echo "<tr>";
-            // لكل عمود، ننشئ صفوف الضرب
             for ($row = 1; $row <= 6; $row++) {
-                $result = $row * $col; // الحساب
+                $result = $row * $col; 
                 echo "<td>{$row} * {$col} = {$result}</td>";
             }
             echo "</tr>";
@@ -348,39 +338,56 @@ Expected Output:
 
      
 
-<?php
-// Function to print the pattern
-function printPattern() {
-    $letters = range('A', 'E'); // Define the letters to use (A to E)
-    
-    // Print the upper part of the pattern (pyramid shape)
-    for ($i = 0; $i < count($letters); $i++) {
-        // Print spaces before the letters in each row
-        echo str_repeat(" ", count($letters) - $i - 1);
-        
-        // Print the letters in each row
-        for ($j = 0; $j <= $i; $j++) {
-            echo $letters[$j] . " ";
+     !DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Pattern - Loops - Exer 12</title>
+    <style>
+        h3 {
+            background-color: lightsalmon;
         }
-        
-        echo "<br>"; // Move to the next line
-    }
-
-    // Print the lower part of the pattern (reverse pyramid shape)
-    for ($i = count($letters) - 2; $i >= 0; $i--) {
-        // Print spaces before the letters in each row
-        echo str_repeat(" ", count($letters) - $i - 1);
-        
-        // Print the letters in each row
-        for ($j = 0; $j <= $i; $j++) {
-            echo $letters[$j] . " ";
+        p {
+            font-size: 10px;
+            background-color: aliceblue;
         }
-
-        echo "<br>"; // Move to the next line
-    }
-}
-
-// Example usage
-printPattern();
-?>
+    </style>
+</head>
+<body>
+    <h3>Exer-12</h3>
+    <p>Diamond pattern</p>
+    <?php
+        $letters = str_split("ABCDE");
+        $total = count($letters);
+        echo "<pre>";
+        for ($i = 1; $i <= $total; $i++) {
+            $index = 0;
+            for ($j = 1; $j <= $total; $j++) {
+                if ($j < $total - $i + 1) {
+                    echo " ";
+                } else {
+                    echo $letters[$index] . " ";
+                    $index++;
+                }
+            }
+            echo "<br>";
+            if ($i == $total) {
+                for ($k = $total - 1; $k >= 1; $k--) {
+                    $index = 0;
+                    for ($l = 1; $l <= $total; $l++) {
+                        if ($l < $total - $k + 1) {
+                            echo " ";
+                        } else {
+                            echo $letters[$index] . " ";
+                            $index++;
+                        }
+                    }
+                    echo "<br>";
+                }
+            }
+        }
+    ?>
+</body>
+</html>
 

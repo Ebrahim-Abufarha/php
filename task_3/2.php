@@ -5,27 +5,22 @@ Expected Output: 3 is a prime number  -->
 
 
 <?php
-// دالة للتحقق مما إذا كان العدد أوليًا
 function isPrime($number) {
-    // الأعداد الأقل من 2 ليست أولية
     if ($number < 2) {
         return false;
     }
 
-    // التحقق من القسمة على الأعداد من 2 حتى الجذر التربيعي للعدد
     for ($i = 2; $i <= sqrt($number); $i++) {
         if ($number % $i == 0) {
-            return false; // العدد ليس أوليًا
+            return false;
         }
     }
 
-    return true; // العدد أولي
+    return true;
 }
 
-// قراءة المدخل من المستخدم (يمكنك استبدال الرقم بمدخل من المستخدم)
 $input = 3;
 
-// التحقق وطباعة النتيجة
 if (isPrime($input)) {
     echo "$input is a prime number" , "<br>";
 } else {
@@ -131,30 +126,21 @@ Expected Output: 407 is Armstrong Number  -->
 
 
 <?php
-// دالة للتحقق مما إذا كان العدد أرمسترونغ
 function isArmstrong($number) {
-    // حفظ العدد الأصلي لتتم المقارنة في النهاية
     $originalNumber = $number;
     
-    // حساب عدد الأرقام في العدد
     $numDigits = strlen($number);
     
-    // تهيئة المتغير للمجموع
     $sum = 0;
     
-    // تكرار عبر كل رقم في العدد
     while ($number > 0) {
-        // استخراج الرقم الأخير
         $digit = $number % 10;
         
-        // حساب مكعب الرقم وإضافته إلى المجموع
         $sum += pow($digit, 3);
         
-        // إزالة الرقم الأخير من العدد
         $number = (int)($number / 10);
     }
     
-    // مقارنة المجموع مع العدد الأصلي
     if ($sum == $originalNumber) {
         echo "$originalNumber is an Armstrong number", "<br>";
     } else {
@@ -162,7 +148,6 @@ function isArmstrong($number) {
     }
 }
 
-// اختبار الدالة باستخدام العدد 407
 $isArmstrong = 407;
 isArmstrong($isArmstrong);
 ?>
