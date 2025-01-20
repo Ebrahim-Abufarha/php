@@ -449,13 +449,10 @@ Expected Result : Array ( [0] => 8 / [1] => 7 / [2] => 5 / [3] => 4 / [4] => 3 /
 
 
 <?php
-// تعريف المصفوفة
 $array = array(5, 3, 1, 3, 8, 7, 4, 1, 1, 3);
 
-// استخدام دالة rsort لترتيب المصفوفة تنازليًا
 rsort($array);
 
-// عرض النتيجة
 echo "Sorted Array (Descending Order): ";
 print_r($array);
 echo "<br>";
