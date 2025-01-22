@@ -48,6 +48,27 @@ $phones = [
     'brand' => 'Samsung',
     'price' => 'JOD 267.00'
     ],
+    [ 
+        'name' => ' 100 ',
+        'img_url' =>'https://mefrhco.com/wp-content/uploads/3-1.webp',
+       'rate' => '0',
+       'brand' => 'Nokia',
+       'price' => 'JOD 18.00'
+       ],
+       [ 
+        'name' => '216',
+        'img_url' =>'https://mefrhco.com/wp-content/uploads/Nokia-216-2.webp',
+       'rate' => '0',
+       'brand' => 'Nokia',
+       'price' => 'JOD 19.5'
+       ],
+       [ 
+        'name' => ' 6630',
+        'img_url' =>'https://d1jbip55yyitxr.cloudfront.net/uploads/2017/06/24184446/11_big.jpg',
+       'rate' => '0',
+       'brand' => 'Nokia',
+       'price' => 'JOD 50.75'
+       ],
 ];
 
 ?>
