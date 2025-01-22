@@ -128,18 +128,17 @@ $phones = [
 <div class="container mt-5 p-5">
     <div class="row g-4">
         <?php
-        for ($i = 0; $i < count($phones); $i++) {
-            $brand = $phones[$i]['brand'];
-            $name = $phones[$i]['name'];
-            $img = $phones[$i]['img_url'];
-            $price = $phones[$i]['price'];
+
+
+foreach($phones as $phone){
+       
             echo "
             <div class='col-md-4 col-sm-6'>
                 <div class='card h-100 shadow d-flex flex-column'>
-                    <img src='$img' class='card-img-top' style='object-fit: contain; height: 200px; background-color: #f8f9fa;' alt='$brand $name'>
+                    <img src='{$phone['img_url']}' class='card-img-top' style='object-fit: contain; height: 200px; background-color: #f8f9fa;' alt='{$phone['brand']} {$phone['name']}'>
                     <div class='card-body text-center flex-grow-1'>
-                        <h5 class='card-title'>$brand $name</h5>
-                        <p class='card-text text-primary fw-bold'>$price <span class='text-secondary' style='font-size: 12px;'>with tax</span></p>
+                        <h5 class='card-title'>{$phone['brand']} {$phone['name']}</h5>
+                        <p class='card-text text-primary fw-bold'>{$phone['price']} <span class='text-secondary' style='font-size: 12px;'>with tax</span></p>
                     </div>
                     <div class='card-footer bg-white border-0'>
                         <a href='#' class='btn btn-primary w-100'>View Details</a>
