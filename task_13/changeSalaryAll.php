@@ -1,64 +1,63 @@
-<?php include("config.php"); 
-
-
-
-?>
+<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Salary</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<form method="POST" action="">
-<label for="employee_id">Inter ID for employee</label>
-    <input type="text" name="employee_id">
+<body class="bg-light">
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Update Employee Salary</h2>
 
-    <button type="submit" name="update_one">Update the salary for the employee</button><br><br>
-    <label for="salary_new">Inter the salary:</label>
-    <input type="text" name="salary_new" required>
-    
-    <button type="submit" name="update_all">Update all salary</button>
+    <div class="card p-4 shadow">
+        <form method="POST" action="">
+            <div class="mb-3">
+                <label for="employee_id" class="form-label">Enter Employee ID (Leave empty for all employees):</label>
+                <input type="number" name="employee_id" class="form-control" placeholder="Employee ID">
+            </div>
 
-   
-</form>
-<br>
-</body>
-</html>
+            <div class="mb-3">
+                <label for="salary_change" class="form-label">Enter Amount to Increase/Decrease:</label>
+                <input type="number" name="salary_change" class="form-control" required placeholder="Enter a positive or negative value">
+            </div>
+
+            <button type="submit" name="update_salary" class="btn btn-primary w-100">Update Salary</button>
+        </form>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="index.php" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
+
 <?php
-if(isset($_POST['update_all'])){
-    $salary_new = $_POST['salary_new'];
+if(isset($_POST['update_salary'])){
+    $salary_change = $_POST['salary_change'];
+    $employee_id = isset($_POST['employee_id']) && !empty($_POST['employee_id']) ? intval($_POST['employee_id']) : null;
 
-    $query_update_all = "UPDATE `employees` SET `salary`='$salary_new'";
-    $result_update_all = $conn->query($query_update_all);
-    
-    if($result_update_all){
-        echo header('location: index.php');
+    if ($employee_id) {
+        $query_update = "UPDATE `employees` SET `salary` = `salary` + ? WHERE `id` = ?";
+        $stmt = $conn->prepare($query_update);
+        $stmt->bind_param("di", $salary_change, $employee_id);
     } else {
-        echo "Fill the salary";
+        $query_update = "UPDATE `employees` SET `salary` = `salary` + ?";
+        $stmt = $conn->prepare($query_update);
+        $stmt->bind_param("d", $salary_change);
     }
-}
 
-if(isset($_POST['update_one'])){
-    $employee_id = $_POST['employee_id'];
-    $salary_new = $_POST['salary_new'];
-
-    $query_check = "SELECT * FROM `employees` WHERE `id`='$employee_id'";
-    $result_check = $conn->query($query_check);
-
-    if($result_check->num_rows > 0){
-        $query_update_one = "UPDATE `employees` SET `salary`='$salary_new' WHERE `id`='$employee_id'";
-        $result_update_one = $conn->query($query_update_one);
-
-        if($result_update_one){
-            echo header('location: index.php');
-        } else {
-            echo "Fill the salary";
-        }
+    if ($stmt->execute()) {
+        echo "<script>alert('Salary updated successfully!'); window.location='index.php';</script>";
     } else {
-        echo "Didn't found ID";
+        echo "<script>alert('Error updating salary. Please try again.');</script>";
     }
 }
 ?>
-<button onclick="location.href='index.php'">Home page</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
